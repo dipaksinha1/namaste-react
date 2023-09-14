@@ -20,11 +20,12 @@ const heading = React.createElement("div", { class: "parent" }, [
   React.createElement("div", { class: "child3" }, [
     React.createElement("h3", { class: "sibling1" }, "Hi h3"),
     React.createElement("h3", { class: "sibling2" }, "Hi h3"),
-  ])
+  ]),
 ]);
+
+console.log("React Element", heading);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(heading);
-
 
 // React is just a library which imported and used anywhere the code. Additionally, It can be used in any webapp as you just need to import and write library function of react
