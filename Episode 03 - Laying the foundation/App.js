@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const jsxHeading = <h1>hello one line</h1>;
+const jsxHeading = <h1 className={{className: "h2"}}>hello one line</h1>;
 
-const heading=React.createElement('div',{className:"h1"},"Hi heading")
+const heading = React.createElement("div", { className: "h1" }, "Hi heading");
 
 console.log(jsxHeading);
 console.log(heading);
