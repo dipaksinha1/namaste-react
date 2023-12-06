@@ -18,10 +18,10 @@ const Body = () => {
           setSearchtext(event.target.value);
           console.log(searchtext); //why does it print previous value EVEN THOUGH WE UPDATED IN LINE 19?
 
-          // In React, the useState hook in functional components is asynchronous, meaning that the state 
-          // updates may not be immediately reflected in the variable holding the state. When you call setSearchtext(event.target.value), 
+          // In React, the useState hook in functional components is asynchronous, meaning that the state
+          // updates may not be immediately reflected in the variable holding the state. When you call setSearchtext(event.target.value),
           // React schedules an update to the state, but it doesn't happen immediately.
-          
+
           // Therefore, when you log the searchtext immediately after calling setSearchtext(event.target.value), you may see the previous value because the state update hasn't been applied yet.
           const filteredData = restData.filter((obj) =>
             obj.title.startsWith(searchtextValue)
