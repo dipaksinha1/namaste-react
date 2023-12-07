@@ -8,8 +8,8 @@
 //   "Hello world from React"
 // );
 
-import React from 'react'
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const heading = React.createElement("div", { class: "parent" }, [
   React.createElement("div", { class: "child1" }, [
@@ -33,4 +33,4 @@ root.render(heading);
 
 // React is just a library which imported and used anywhere the code. Additionally, It can be used in any webapp as you just need to import and write library function of react
 
-//To run build command ,remove "main":"index.js" from package.json 
+//To run build command ,remove "main":"index.js" from package.json
