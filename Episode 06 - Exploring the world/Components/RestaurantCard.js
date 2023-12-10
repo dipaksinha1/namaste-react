@@ -1,11 +1,12 @@
+import {CDN_URL} from './../utils/constant'
 const RestaurantCard = (props) => {
-  const { img, title, rating, time } = props.restaurantData;
+  const { cloudinaryImageId, name, avgRating, sla } = props.restaurantData.info;
   return (
     <div className="restaurant-card">
-      <img src={img} />
-      <h1>{title}</h1>
-      <h2>{rating}</h2>
-      <p>Delivery in {time}</p>
+      <img src={CDN_URL+cloudinaryImageId} />
+      <h1>{name}</h1>
+      <h2>{avgRating}</h2>
+      <p>Delivery in {sla.slaString}</p>
     </div>
   );
 };

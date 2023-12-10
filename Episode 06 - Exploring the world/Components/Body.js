@@ -1,23 +1,30 @@
 import RestaurantCard from "./RestaurantCard";
-import { restData } from "./../utils/resMockData";
 import { useEffect, useState } from "react";
 const Body = () => {
   const [searchtext, setSearchtext] = useState("");
-  const [reslist, setReslist] = useState(restData);
+  const [reslist, setReslist] = useState([]);
+  const [listOfAllRestaurant, setListOfAllRestaurant] = useState([]);
 
   useEffect(() => {
     console.log("useEffect Called");
     fetchData();
-  }, []); //Empty dpenedency array means , will run once the componenet is mounted initially
+  }, []);
 
   const fetchData = async () => {
     const response = await fetch(
       "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9351929&lng=77.62448069999999"
     );
+    console.log(response);
+    const json = await response.json();
+    setReslist(
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
 
-    const json=await response.json();
-    console.log(json)
-    console.log(json.data.success.cards[4].gridElements.restaurants)
+    setListOfAllRestaurant(
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
   console.log("Componenet rendered");
@@ -31,15 +38,21 @@ const Body = () => {
         onChange={(event) => {
           const searchtextValue = event.target.value;
           setSearchtext(event.target.value);
-          const filteredData = restData.filter((obj) =>
-            obj.title.startsWith(searchtextValue)
+
+          const filteredRestaurantLists = listOfAllRestaurant.filter((obj) =>
+            obj.info.name
+              .toLowerCase()
+              .startsWith(searchtextValue.toLowerCase())
           );
-          setReslist(filteredData);
+          setReslist(filteredRestaurantLists);
         }}
       />
       <div className="restaurant-list">
         {reslist.map((restaurant) => (
-          <RestaurantCard restaurantData={restaurant} key={restaurant.id} />
+          <RestaurantCard
+            restaurantData={restaurant}
+            key={restaurant.info.id}
+          />
         ))}
       </div>
     </div>

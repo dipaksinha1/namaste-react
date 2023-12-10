@@ -1,10 +1,7 @@
 const styleHeader = {
   backgroundColor: "blanchedalmond",
 };
-
-import { restData } from "./../utils/resMockData";
 import { FOOD_LOGO } from "./../utils/constant";
-console.log(restData);
 export const Header = () => {
   return (
     <div className="header" style={{ backgroundColor: "blanchedalmond" }}>
