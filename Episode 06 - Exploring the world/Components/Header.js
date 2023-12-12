@@ -18,7 +18,6 @@ export const Header = () => {
         <button
           onClick={() => {
             loginButton = loginButton === "Login" ? "Logout" : "Login";
-            
           }}
         >
           {loginButton}
