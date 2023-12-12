@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 const Body = () => {
   const [searchtext, setSearchtext] = useState("");
   const [reslist, setReslist] = useState([]);
@@ -12,23 +13,26 @@ const Body = () => {
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9351929&lng=77.62448069999999"
+      "https://corsproxy.io/?https://www.swiggy.com/mapi/homepage/getCards?lat=12.9351929&lng=77.62448069999999"
     );
-    console.log(response);
     const json = await response.json();
+    console.log(json);
     setReslist(
-      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
+      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants //optional chainkng
     );
 
     setListOfAllRestaurant(
-      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };
 
   console.log("Componenet rendered");
-  return (
+console.log(reslist)
+  return reslist.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div>Search</div>
       <input

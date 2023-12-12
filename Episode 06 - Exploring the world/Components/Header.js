@@ -1,6 +1,9 @@
 const styleHeader = {
   backgroundColor: "blanchedalmond",
 };
+
+let loginButton = "Login";
+
 import { FOOD_LOGO } from "./../utils/constant";
 export const Header = () => {
   return (
@@ -12,6 +15,14 @@ export const Header = () => {
         <li>Home</li>
         <li>About</li>
         <li>Contact Us</li>
+        <button
+          onClick={() => {
+            loginButton = loginButton === "Login" ? "Logout" : "Login";
+            
+          }}
+        >
+          {loginButton}
+        </button>
       </ul>
     </div>
   );
