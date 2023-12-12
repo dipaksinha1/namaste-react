@@ -18,18 +18,18 @@ const Body = () => {
     const json = await response.json();
     console.log(json);
     setReslist(
-      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants //optional chainkng
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants //optional chaining
     );
 
     setListOfAllRestaurant(
-      json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };
 
   console.log("Componenet rendered");
-console.log(reslist)
+  console.log(reslist);
   return reslist.length === 0 ? (
     <Shimmer />
   ) : (
@@ -42,11 +42,8 @@ console.log(reslist)
         onChange={(event) => {
           const searchtextValue = event.target.value;
           setSearchtext(event.target.value);
-
           const filteredRestaurantLists = listOfAllRestaurant.filter((obj) =>
-            obj.info.name
-              .toLowerCase()
-              .startsWith(searchtextValue.toLowerCase())
+            obj.info.name.toLowerCase().includes(searchtextValue.toLowerCase())
           );
           setReslist(filteredRestaurantLists);
         }}

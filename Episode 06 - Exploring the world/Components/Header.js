@@ -1,11 +1,12 @@
-const styleHeader = {
-  backgroundColor: "blanchedalmond",
-};
-
-let loginButton = "Login";
-
+import { useState } from "react";
 import { FOOD_LOGO } from "./../utils/constant";
+
 export const Header = () => {
+  // let loginButton = "Login";//Normal Variable
+
+  const [loginButton, setLoginButton] = useState("Login"); //When it is a variable then why it is a constant not let as we are changing value?
+  //whenever state changes whole componenet is re rendered so const is ok
+
   return (
     <div className="header" style={{ backgroundColor: "blanchedalmond" }}>
       <div className="logo">
@@ -17,7 +18,9 @@ export const Header = () => {
         <li>Contact Us</li>
         <button
           onClick={() => {
-            loginButton = loginButton === "Login" ? "Logout" : "Login";
+            setLoginButton(loginButton === "Login" ? "Logout" : "Login");
+            console.log(loginButton);
+            //Here if we log normal variable,value is changed but it wont show on UI bc react didnt render this component when value was chnaged. So you need to declare state variable.
           }}
         >
           {loginButton}
