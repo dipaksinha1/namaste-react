@@ -7,6 +7,15 @@ export const Header = () => {
   const [loginButton, setLoginButton] = useState("Login"); //When it is a variable then why it is a constant not let as we are changing value?
   //whenever state changes whole componenet is re rendered so const is ok
 
+  //you can use more than 1 useEffect
+  useEffect(() => {
+    console.log("useEffect Header called 1");
+  });
+
+  useEffect(() => {
+    console.log("useEffect Header called 2");
+  });
+
   return (
     <div className="header" style={{ backgroundColor: "blanchedalmond" }}>
       <div className="logo">

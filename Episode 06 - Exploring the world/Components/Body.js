@@ -6,6 +6,9 @@ const Body = () => {
   const [reslist, setReslist] = useState([]);
   const [listOfAllRestaurant, setListOfAllRestaurant] = useState([]);
 
+  //whenever state variables, update react triggers reconcilaition cycle(rerenders the componenet)
+  console.log("Componenet rendered");
+
   useEffect(() => {
     console.log("useEffect Called");
     fetchData();
@@ -28,7 +31,6 @@ const Body = () => {
     );
   };
 
-  console.log("Componenet rendered");
   console.log(reslist);
   return reslist.length === 0 ? (
     <Shimmer />
