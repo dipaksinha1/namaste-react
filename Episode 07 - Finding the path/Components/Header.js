@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FOOD_LOGO } from "./../utils/constant";
-
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 export const Header = () => {
   // let loginButton = "Login";//Normal Variable
 
@@ -23,8 +24,9 @@ export const Header = () => {
       </div>
       <ul className="nav-items">
         <li>Home</li>
-        <li>About</li>
-        <li>Contact Us</li>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact Us</Link>
         <button
           onClick={() => {
             setLoginButton(loginButton === "Login" ? "Logout" : "Login");
