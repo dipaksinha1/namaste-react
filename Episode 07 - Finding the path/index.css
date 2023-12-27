@@ -27,9 +27,11 @@
   flex-direction: row;
 }
 
-.nav-items > li {
+.nav-items > a {
   list-style-type: none;
   padding: 20px;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .restaurant-card {
@@ -52,7 +54,7 @@
   flex-wrap: wrap;
 }
 
-.shimmer-container{
+.shimmer-container {
   display: flex;
   flex-wrap: wrap;
 }
