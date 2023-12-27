@@ -13,19 +13,31 @@ const Body = () => {
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/mapi/homepage/getCards?lat=12.9351929&lng=77.62448069999999"
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await response.json();
-    console.log(json);
-    setReslist(
-      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants //optional chaining
-    );
 
-    setListOfAllRestaurant(
-      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    // Function to check Swiggy Restaurant data resDataCheck()
+    async function resDataCheck(jsonData) {
+      for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+        console.log(i); //Index where we actually got the data
+        // Optional chaining
+        let jsonData =
+          json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants;
+
+        // If jsonData is defined, return it.
+        if (jsonData !== undefined) {
+          return jsonData;
+        }
+      }
+    }
+
+    const resData = await resDataCheck(json);
+    console.log(json);
+
+    setReslist(resData);
+    setListOfAllRestaurant(resData);
   };
 
   console.log("Componenet rendered");
