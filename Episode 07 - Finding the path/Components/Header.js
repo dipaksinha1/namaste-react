@@ -23,7 +23,6 @@ export const Header = () => {
         <img src={FOOD_LOGO} alt="food-logo" />
       </div>
       <ul className="nav-items">
-        <li>Home</li>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact Us</Link>
