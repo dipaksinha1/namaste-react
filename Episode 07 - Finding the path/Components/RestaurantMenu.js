@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
@@ -10,7 +11,6 @@ const RestaurantMenu = () => {
       `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=${id}`
     );
     const json = await data.json();
-    console.log("------------");
     useResMenu(json);
     console.log(json);
   };
@@ -20,7 +20,9 @@ const RestaurantMenu = () => {
     getData();
   }, []);
 
-  return Object.keys(resMenu).length === 0 ? null : (
+  return Object.keys(resMenu).length === 0 ? (
+    <Shimmer />
+  ) : (
     <div>
       <h1>{resMenu?.data?.cards[0]?.card?.card?.text}</h1>
       <ul>
