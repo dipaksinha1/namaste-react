@@ -47,7 +47,9 @@ const RestaurantMenu = () => {
       <h1>{resMenu}</h1>
       <ul>
         {menuItems.map((item) => (
-          <li id={item?.id}>{item?.name}</li>
+          <li id={item?.id}>
+            {item?.name} - RS{item.finalPrice / 100}
+          </li>
         ))}
       </ul>
     </div>
