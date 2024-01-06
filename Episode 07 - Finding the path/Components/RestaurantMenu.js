@@ -50,6 +50,7 @@ const RestaurantMenu = () => {
           <li id={item?.id}>
             {item?.name} - RS{item.finalPrice / 100}
           </li>
+          <li id={item?.id}>{item?.name}</li>
         ))}
       </ul>
     </div>
