@@ -18,7 +18,7 @@ const Body = () => {
     const json = await response.json();
 
     // Function to check Swiggy Restaurant data resDataCheck()
-    async function resDataCheck(jsonData) {
+    function resDataCheck(jsonData) {
       for (let i = 0; i < jsonData?.data?.cards.length; i++) {
         console.log(i); //Index where we actually got the data
         // Optional chaining
@@ -33,7 +33,7 @@ const Body = () => {
       }
     }
 
-    const resData = await resDataCheck(json);
+    const resData = resDataCheck(json);
     console.log(json);
 
     setReslist(resData);
