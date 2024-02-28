@@ -7,12 +7,13 @@ import About from "./Components/About";
 import Contact from "./Components/Contact";
 import { Error } from "./Components/Error";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import Login from "./Components/Login";
 const AppLayout = () => {
   return (
-    <div className="main-container">
+    <>
       <Header />
       <Outlet />
-    </div>
+    </>
   );
 };
 
@@ -33,7 +34,10 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      ,
+      {
+        path: "/login",
+        element: <Login />,
+      },
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
