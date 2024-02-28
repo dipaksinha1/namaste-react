@@ -18,7 +18,7 @@ export const Header = () => {
   });
 
   return (
-    <div className="header" style={{ backgroundColor: "blanchedalmond" }}>
+    <div className="header">
       <div className="logo">
         <img src={FOOD_LOGO} alt="food-logo" />
       </div>
@@ -26,15 +26,7 @@ export const Header = () => {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact Us</Link>
-        <button
-          onClick={() => {
-            setLoginButton(loginButton === "Login" ? "Logout" : "Login");
-            console.log(loginButton);
-            //Here if we log normal variable,value is changed but it wont show on UI bc react didnt render this component when value was chnaged. So you need to declare state variable.
-          }}
-        >
-          {loginButton}
-        </button>
+        <Link to="/login">Login</Link>
       </ul>
     </div>
   );

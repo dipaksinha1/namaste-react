@@ -1,25 +1,30 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
-.main-container {
-  width: 100%;
-  height: 100vh;
+html {
+  font-size: 10px;
 }
 
 .header {
+  height: auto;
   display: flex;
   justify-content: space-between;
+  box-shadow: -2px 7px 5px -6px rgba(0, 0, 0, 0.61);
 }
 
 .logo {
   height: auto;
+  padding: 1rem;
 }
 
 .logo > img {
-  width: 100px;
-  height: 100px;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  margin-left: 1rem;
 }
 
 .nav-items {
@@ -28,24 +33,64 @@
 }
 
 .nav-items > a {
-  list-style-type: none;
-  padding: 20px;
+  color: #2f4f4f;
+  align-items: center;
+  height: auto;
+  margin: 2rem;
+  font-family: PT Sans, Calibri, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
   text-decoration: none;
-  font-size: 20px;
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-items > a:hover {
+  color: orangered;
 }
 
 .restaurant-card {
+  width: 300px;
+  height: auto;
   margin: 10px;
+  padding: 15px;
+  box-shadow: -1px 5px 10px 5px rgba(112, 112, 112, 0.2);
+  border-radius: 1rem;
 }
 
 .restaurant-card:hover {
   cursor: pointer;
-  border: 2px solid gray;
+  background-color: #d3d3d3;
 }
 
 .restaurant-card > img {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+
+.restaurant-card h1 {
+  font-family: Basis_Grotesque_Pro_Bold;
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.75);
+  overflow: hidden;
+  width: 100%;
+}
+
+.restaurant-card h4 {
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.6);
+  overflow: hidden;
+  width: 100%;
+  overflow-wrap: break-word;
 }
 
 .restaurant-list {
@@ -64,4 +109,116 @@
   width: 200px;
   height: 400px;
   background-color: #f0f0f0;
+}
+
+.search-text {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
+
+.search-restaurant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container {
+  width: 40%;
+}
+
+.search-text-input {
+  border-radius: 20px;
+  width: 100%;
+  height: 4rem;
+  padding: 0.5rem 0.5rem 0.5rem 35px;
+  background-image: url("./utils/search.png"); /* Replace 'search-icon.png' with your icon image */
+  background-repeat: no-repeat;
+  background-position: 5px center; /* Adjust the position of the icon */
+  background-size: 16px; /* Adjust the size of the icon */
+  border: 2px solid orangered;
+}
+
+.search-text-input:focus {
+  outline: none;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-restaurant {
+  margin-bottom: 3rem;
+}
+
+.about-res {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.res-details {
+  font-family: Basis_Grotesque_Pro_Bold;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.75);
+}
+
+.not-found-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-animation {
+  width: 400px;
+  height: 400px;
+}
+
+/* Default styles for all screen sizes */
+@media (max-width: 500px) {
+  .nav-items a {
+    padding: 0;
+  }
+}
+
+/* Styles for small devices (phones) */
+@media (max-width: 576px) {
+  /* CSS rules specific to small devices */
+  .nav-items a {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+  }
+  .logo > img {
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+  }
+  .search-text-input {
+    /* font-size: 1.5rem; */
+  }
+  .search-container {
+    width: 80%;
+  }
+}
+
+/* Styles for medium devices (tablets) */
+@media (max-width: 768px) {
+  /* CSS rules specific to medium devices */
+}
+
+/* Styles for large devices (desktops) */
+@media (max-width: 992px) {
+  /* CSS rules specific to large devices */
+}
+
+/* Styles for extra-large devices (large desktops) */
+@media (max-width: 1200px) {
+  /* CSS rules specific to extra-large devices */
 }

@@ -1,6 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import Lottie from "lottie-react";
+import notFoundRestaurant from "./../images/notFoundRestaurant.json";
+
 const Body = () => {
   const [searchtext, setSearchtext] = useState("");
   const [reslist, setReslist] = useState([]);
@@ -42,32 +45,47 @@ const Body = () => {
 
   console.log("Componenet rendered");
   console.log(reslist);
-  return reslist.length === 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <div className="body">
-      <div>Search</div>
-      <input
-        type="text"
-        placeholder="Enter Restaurant name here to search"
-        value={searchtext}
-        onChange={(event) => {
-          const searchtextValue = event.target.value;
-          setSearchtext(event.target.value);
-          const filteredRestaurantLists = listOfAllRestaurant.filter((obj) =>
-            obj.info.name.toLowerCase().includes(searchtextValue.toLowerCase())
-          );
-          setReslist(filteredRestaurantLists);
-        }}
-      />
-      <div className="restaurant-list">
-        {reslist.map((restaurant) => (
-          <RestaurantCard
-            restaurantData={restaurant}
-            key={restaurant.info.id}
+      <div className="search-restaurant">
+        <div className="search-text">Search</div>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder=" Search Restaurant Name"
+            value={searchtext}
+            className="search-text-input"
+            onChange={(event) => {
+              const searchtextValue = event.target.value;
+              setSearchtext(event.target.value);
+              const filteredRestaurantLists = listOfAllRestaurant.filter(
+                (obj) =>
+                  obj.info.name
+                    .toLowerCase()
+                    .includes(searchtextValue.toLowerCase())
+              );
+              setReslist(filteredRestaurantLists);
+            }}
           />
-        ))}
+        </div>
       </div>
+      {reslist.length === 0 ? (
+        // <Shimmer />
+        <div className="not-found-container">
+          <div className="not-found-animation">
+            <Lottie animationData={notFoundRestaurant} loop={true} />
+          </div>
+        </div>
+      ) : (
+        <div className="restaurant-list">
+          {reslist.map((restaurant) => (
+            <RestaurantCard
+              restaurantData={restaurant}
+              key={restaurant.info.id}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
